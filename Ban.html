@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Streaming</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="ENJOY FREE LIVE IPTV M3U8">
     <meta name="keywords" content="Watch live sports streaming online, including football, basketball, baseball, 
     hockey, and more. Stream your favorite sports teams and events in HD, with no cable subscription required.">
     <meta name="author" content="xflixbd.com">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" type="image/x-icon" href="">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.6.2/dist/plyr.css" />
     <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.12/dist/plyr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.4/dist/hls.min.js"></script>
@@ -17,9 +16,9 @@
     <style>
         html {
             font-family: Poppins;
-            background: #000 ;
+            background: #000;
             margin: 0;
-            padding: 0
+            padding: 0;
         }
 
         .loading {
@@ -91,11 +90,12 @@
             filter: blur(0px);
             animation: blur-text 1.5s 1.4s infinite linear alternate;
         }
-        
+
         .loading-text span:nth-child(9) {
             filter: blur(0px);
             animation: blur-text 1.5s 1.6s infinite linear alternate;
         }
+
         @keyframes blur-text {
             0% {
                 filter: blur(0px);
@@ -108,14 +108,14 @@
 
         .plyr__video-wrapper::after {
             position: absolute;
-            bottom: 15px;  /* Position the watermark at the bottom */
-            right: 15px;   /* Position the watermark at the right corner */
+            bottom: 15px;
+            right: 15px;
             z-index: 10;
-            content: 'xflixbd.com'; /* Watermark text */
-            font-size: 16px; /* Adjust the font size as needed */
-            color: white; /* Watermark color */
-            opacity: 0.4; /* Watermark opacity */
-            pointer-events: none; /* Ensure it doesn't interfere with player controls */
+            content: 'xflixbd.com';
+            font-size: 16px;
+            color: white;
+            opacity: 0.4;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -130,6 +130,7 @@
 </video>
 
 <script>
+    // Hide loading screen after 3 seconds
     setTimeout(videovisible, 3000);
 
     function videovisible() {
@@ -157,14 +158,42 @@
                         });
                     })(e)
                 };
-                new Plyr(e, o);
+              
+  new Plyr(e, o);
             }), t.attachMedia(e), window.hls = t;
         } else {
             new Plyr(e, o);
         }
     });
 
+    // Disable right-click
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
 
+    // Disable specific keyboard shortcuts
+    document.onkeydown = function(e) {
+        // Disable F12 (Dev Tools)
+        if (e.keyCode == 123) {
+            return false;
+        }
+        // Disable Ctrl+Shift+I (Dev Tools)
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        // Disable Ctrl+Shift+C (Inspect Element)
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+            return false;
+        }
+        // Disable Ctrl+Shift+J (Dev Tools)
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        // Disable Ctrl+U (View Source)
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+    };
 </script>
 </body>
 </html>
